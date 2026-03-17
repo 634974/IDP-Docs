@@ -1,0 +1,86 @@
+site_name: IDP Documentation
+docs_dir: docs
+nav:
+  - Home: index.md
+  - IDP User API Guide:
+    - StarterKit/Getting Started.md
+    - IDP User APIs: StarterKit/overview.md
+    - APIs:
+      - Authentication API: StarterKit/Authentication APIs.md
+      - Document Upload API: StarterKit/Uploading document APIs.md
+      - Job Management API: StarterKit/Job Management API.md  
+    - Swagger Documentation: StarterKit/Swagger/Swagger.md
+    - Best Practices: StarterKit/Best Practices.md
+    - FAQs: StarterKit/FAQs.md
+    - Contact: StarterKit/Contact.md
+  - IDP HITL Guide:
+    - Overview: HITL User Guide/Overview.md
+    - Accessing the HITL portal: HITL User Guide/Accessing the portal.md
+    - Home page:
+      - HITL User Guide/Home page (Overview).md
+      - Review: HITL User Guide/Review page.md
+      - Reject: HITL User Guide/Reject page.md
+      - Reports: 
+        - General Operations: HITL User Guide/Reports.md
+        - Executive Dashboard Charts: HITL User Guide/Report Screen Metics.md
+        - AI Metrics Dashboard: HITL User Guide/AI Metrics.md
+        - Pricing Dashboard: HITL User Guide/Pricing.md
+        - Deep Dive Data Dashboard: HITL User Guide/Deep Dive data.md
+        - Glossary: HITL User Guide/Glossary.md
+      - Admin: HITL User Guide/Admin Page.md
+  - IDP Admin API Guide:
+    - Admin APIs/overview.md
+    - APIs:
+      - Authentication: Admin APIs/Authentication.md
+      - Tenant Related APIs: Admin APIs/TenantAPI.md
+      - Form Related APIs: Admin APIs/FormAPI.md   
+      - User Access API: Admin APIs/User access API.md
+    - Best Practices:  Admin APIs/Best Practices.md
+    - FAQs: Admin APIs/FAQs.md
+
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Nunito Sans
+  features:
+    - content.code.copy
+    - navigation.footer
+    - navigation.top
+    - navigation.tabs
+    
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 2-3
+  - admonition
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.details
+  - md_in_html
+  
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      include:
+        - "*.ipynb"
+      ignore:
+        - "Files/*.ipynb"
+  - swagger-ui-tag
+  - glightbox 
+
+
+extra_css:
+  - Styles/extra.css
+extra:
+  generator: false
+
+
+extra_javascript:
+  - javascripts/copyright-year.js
+
+
+copyright: >
+  Copyright © <span id="copyright-year"></span> Maximus. All rights reserved.

@@ -1,0 +1,15 @@
+- Restrict admin API access using least privilege (admin role only); avoid embedding admin credentials in shared services unless required.
+- Store tenant secrets (clientSecret) only in a secrets manager; never commit them to repos or share in tickets/chat.
+- Rotate credentials intentionally (on schedule or after exposure) and communicate changes—credential rotation can break integrations until clients update.
+- Treat FormConfig as versioned “release artifacts”: always Get FormConfig first, modify minimal fields, then Update FormConfig and verify by fetching again.
+- Assume safest update semantics: send a complete snapshot payload unless partial-patch behavior is explicitly supported; missing fields can be overwritten/cleared.
+- Maintain FormConfig JSON in Git per tenant/docType; require PR review for changes (fields, queries, prompts, OCR flags, dynamic fields).
+- Keep a small “golden docs” regression set per docType and run smoke tests after any config change (Update/Revert/Offboard/Reboard).
+- Always record a rollback point: before updating, note the current version and ensure revert steps are documented using /formsConfig/revert.
+- Use consistent naming conventions for docTypeId and versionIdentifier across environments to avoid configuration drift.
+- For GenAI prompts (pre/post-processing): treat prompts like code—version them, regression test them, and enforce strict output validation.
+- Minimize sensitive data exposure in prompts and logs; restrict access to configuration fields that may contain operational logic or sensitive text.
+- Use Offboard/Reboard intentionally as operational controls (incident containment, planned deprecation); verify readiness before reboarding.
+- Implement strong auditability for admin actions: log who changed what, when, and which version was created or reverted to.
+- Include a standard “support bundle” for admin operations: timestamp, tenantId, docTypeId, version/versionIdentifier, requestId, and sanitized error responses.
+- Keep non-prod and prod admin operations separated (distinct tenants/credentials), and add guardrails (approvals/change windows) for production config updates.
